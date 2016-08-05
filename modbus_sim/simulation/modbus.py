@@ -1,6 +1,9 @@
+"""
+Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
+
+"""
 from __future__ import absolute_import, unicode_literals
 
-import logging
 
 import serial
 from modbus_tk.defines import (
@@ -8,7 +11,7 @@ from modbus_tk.defines import (
 from modbus_tk.modbus_rtu import RtuServer, RtuMaster
 from modbus_tk.modbus_tcp import TcpServer, TcpMaster
 
-from modbus_sim.utils.logger import set_logger, get_logger
+from modbus_sim.utils.logger import get_logger
 
 ADDRESS_RANGE = {
     COILS: 0,

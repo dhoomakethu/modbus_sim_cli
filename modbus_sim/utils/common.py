@@ -1,3 +1,7 @@
+"""
+Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
+
+"""
 from __future__ import unicode_literals
 from __future__ import absolute_import
 
@@ -13,9 +17,10 @@ def path(name=""):
     name to be an absolute path.
 
     Example:
-    If BrightEdge Root is: /home/vagrant/brightedge
-    path() will return "/home/vagrant/brightedge"
-    path("tools/analyze") will return "/home/vagrant/brightedge/tools/analyze"
+    If BrightEdge Root is: /home/vagrant/modbus_simu_cli
+    path() will return "/home/vagrant/modbus_simu_cli"
+    path("simulation/modbus.py") will return
+    "/home/vagrant/modbus_simu_cli//modbus_sim/simulation/modbus.py"
     path("/usr/bin/python") will return "/usr/bin/python"
     """
     if os.path.exists(name):
