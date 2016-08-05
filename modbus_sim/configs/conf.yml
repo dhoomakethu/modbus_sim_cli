@@ -1,0 +1,83 @@
+# serial settings to be used for modbus rtu
+# applicable to all simulated modbus rtu devices
+serial_settings:
+  baudrate: 9600
+  bytesize: 8
+  parity: N
+  stopbits: 1
+  xonxoff: 0
+  rtscts: 0
+  dsrdtr: 0
+  writetimeout: 2
+  timeout: 2
+
+# tcp settings for modbus tcp simulated device
+# standard modbus port 502 requires root permission
+tcp_settings:
+  address: 127.0.0.1
+  port: 5440
+
+# generic modbus simulation settings for each slave
+# overridden by individual device settings under 'modbus_devices' if present
+
+modbus_settings:
+  bin_min: 0       # min value for coils and discrete inputs
+  bin_max: 1       # max value for coils and discrete inputs)
+  reg_min: 0       # min value for registers
+  reg_max: 65535   # max value for registers
+  discrete_inputs:
+    block_start: 0   # Data block starting offset
+    block_size: 100  # Data block size
+    default: 0     # default value
+  coils:
+    block_start: 0   # Data block starting offset
+    block_size: 100  # Data block size
+    default: 0     # default value
+  holding_registers:
+    block_start: 0   # Data block starting offset
+    block_size: 2000  # Data block size
+    default: 1     # default value
+  input_registers:
+    block_start: 0   # Data block starting offset
+    block_size: 100  # Data block size
+    default: 0     # default value
+
+# to be simulated modbus devices
+modbus_devices:
+  -
+    protocol: "rtu"
+    interface: /dev/ptyp0
+    slaves: 1..12 # slaves in the range of 1 to 12
+
+  -
+    protocol: "rtu"
+    interface: /dev/ptyp1
+    slaves: 1..5, 254 # slaves in the range of 1 to 5 and 254
+
+  -
+    protocol: "rtu"
+    interface: /dev/ptyp2
+    slaves: 100
+    holding_registers:
+    # this block overides values from modbus_settings above
+#      block_start: 0   # Data block starting offset
+#      block_size: 200  # Data block size
+      default: 1       # default value
+#  -
+#    protocol: "tcp"
+#    slaves: 1
+
+
+logging:
+  simulation:
+    console_logging: true
+    console_log_level: info
+    file_logging: true
+    file_log_level: info
+    file_log_path: "~/modbus_sim/simu_logs/simu.log"
+  modbus_tk:
+    console_logging: true
+    console_log_level: warning
+    file_logging: true
+    file_log_level: info
+    file_log_path: "~/modbus_sim/simu_logs/modbus_tk.log"

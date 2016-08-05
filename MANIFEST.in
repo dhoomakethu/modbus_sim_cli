@@ -1,0 +1,4 @@
+include requirements
+include README.md
+recursive-include modbus_sim/configs *
+

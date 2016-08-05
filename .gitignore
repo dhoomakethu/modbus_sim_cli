@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -53,9 +55,8 @@ coverage.xml
 *.log
 local_settings.py
 
-# Flask stuff:
+# Flask instance folder
 instance/
-.webassets-cache
 
 # Scrapy stuff:
 .scrapy
@@ -87,3 +88,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# pychars cache
+.idea
+.idea/*
+.DS_Store
+

@@ -1,0 +1,106 @@
+#!/usr/bin/env python
+"""
+Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
+
+Modbus simulator CLI version based on Modbus tk
+
+"""
+
+from argparse import ArgumentParser, RawTextHelpFormatter
+from modbus_sim import __version__
+
+description = """
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+modbus_simu
+~~~~~~~~~~
+
+Modbus simulator CLI version based on Modbus tk
+
+"""
+
+epilog = """
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+"""
+
+TITLE = """
+
+-------------------------------------------------------------------------------------
+   _____             ._____________                 _________.__
+  /     \   ____   __| _/\______   \__ __  ______  /   _____/|__| _____  __ __
+ /  \ /  \ /  _ \ / __ |  |    |  _/  |  \/  ___/  \_____  \ |  |/     \|  |  \\
+/    Y    (  <_> ) /_/ |  |    |   \  |  /\___ \   /        \|  |  Y Y  \  |  /
+\____|__  /\____/\____ |  |______  /____//____  > /_______  /|__|__|_|  /____/
+        \/            \/         \/           \/          \/          \/
+                                                                        version: %s
+-------------------------------------------------------------------------------------
+
+""" % __version__
+
+
+if __name__ == "__main__":
+    args = []
+    simu_parser = ArgumentParser(prog="Modbus Simulator",
+                                 description=description,
+                                 epilog=epilog,
+                                 formatter_class=RawTextHelpFormatter)
+    simu_parser.add_argument(
+        "-c",
+        "--simu-config",
+        default="~/simu_config/conf.yml",
+        metavar="(str)",
+        required=True,
+        help="Default configuration file to be used for modbus simulation script"
+    )
+    simu_parser.add_argument(
+        "--no-console-log",
+        help="Disbale console logging",
+        action="store_true"
+
+    )
+    simu_parser.add_argument(
+        "--console-log-level",
+        default=None,
+        help="Monitor console log level, overides value "
+             "from configuration file",
+        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
+        type=lambda s: s.upper()
+
+    )
+    simu_parser.add_argument(
+        "--enable-file-logging",
+        help="Enable file logging",
+        action="store_true"
+
+    )
+    simu_parser.add_argument(
+        "--file-log-level",
+        default=None,
+        help="Simulator file log level, overides value "
+             "from configuration file",
+        choices=['debug', 'info', 'warning', 'error', 'critical'],
+        type=lambda s: s.upper()
+
+    )
+
+    simu_parser.add_argument(
+        "--log-file",
+        default=None,
+        help="Default simulation log file",
+
+    )
+
+    simu_parser.add_argument('--version', action='version',
+                             version='%(prog)s {version}'.format(
+                                    version=__version__))
+
+    simu_parser.add_argument("-D", "--debug",
+                             help="Turn on to enable tracing",
+                             action="store_true", dest="debug", default=False)
+
+    args, unknown = simu_parser.parse_known_args()
+
+    from modbus_sim.main import main
+    main(TITLE, args, unknown)

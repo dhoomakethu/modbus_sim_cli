@@ -1,0 +1,4 @@
+coloredlogs==5.0.1
+modbus_tk==0.5.0
+pyyaml==3.11
+trollius==2.1
