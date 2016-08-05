@@ -1,3 +1,4 @@
+### Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
 # Modbus TCP/RTU device simulation tool
 
 # Usage
@@ -40,6 +41,3 @@ modbus_simulator  -c <PATH to config file>
 
 # sample simulation config
 [conf.yml](configs/conf.yml)
-
-
-## Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
