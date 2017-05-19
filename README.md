@@ -1,4 +1,3 @@
-### Copyright (c) 2016 Riptide IO, Inc. All Rights Reserved.
 # Modbus TCP/RTU device simulation tool
 
 # Usage
@@ -15,7 +14,7 @@ usage: Modbus Simulator [-h] -c str
 
 modbus_simu
 ~~~~~~~~~~
-```
+
 Modbus simulator CLI version based on Modbus tk
 
 optional arguments:
@@ -34,10 +33,9 @@ optional arguments:
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ```
-```
 
 # To run
-modbus_simulator  -c <PATH to config file>
+modbus_simulator  -c <PATH_TO_Config_File>
 
 # sample simulation config
 [conf.yml](configs/conf.yml)
