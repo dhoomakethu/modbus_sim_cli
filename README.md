@@ -38,4 +38,4 @@ optional arguments:
 modbus_simulator  -c <PATH_TO_Config_File>
 
 # sample simulation config
-[conf.yml](configs/conf.yml)
+[conf.yml](modbus_sim/configs/conf.yml)
