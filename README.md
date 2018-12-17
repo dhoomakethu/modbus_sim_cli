@@ -1,5 +1,10 @@
 # Modbus TCP/RTU device simulation tool
 
+# Install
+```
+$ python setup.py install
+```
+
 # Usage
 
 ```
